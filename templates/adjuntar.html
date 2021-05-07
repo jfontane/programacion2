@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Curso Web 2010</title>
+<script type="text/javascript">
+function validar(f){
+	if(f.dni.value.length <= 0){
+		alert("Debe ingresar el DNI del alumno");
+		f.dni.focus();
+		return false;
+	}
+	if(f.idMateria.value == ""){
+		alert("Debe seleccionar la materia");
+		f.idMateria.focus();
+		return false;
+	}
+	if(f.practico.value.length <= 0){
+		alert("Debe seleccionar un archivo");
+		f.practico.focus();
+		return false;
+	}
+	return true;
+}
+</script>
+</head>
+<body>
+<h1>Curso Web 2010 - Caja de Jubilaciones</h1>
+<h3><font color="#0066CC">Sistema integrado de administrac&iacute;on - Adjuntar Pr&aacute;ctico</font></h3>
+<hr noshade width="90%" align="left" />
+{error}
+<form name="form1" action="./adjuntar.php" method="post" enctype="multipart/form-data" onsubmit="javascript: return validar(this);">
+<table width="90%" border="0" cellspacing="1" cellpadding="2">
+  <tr>
+    <td width="20%" bgcolor="#0099CC">D.N.I. Alumno:</td>
+    <td width="30%"><input type="text" name="dni" id="dni" value="{dni}" size="10" /></td>
+    <td width="20%" bgcolor="#0099CC">Materia del Pr&aacute;ctico:</td>
+    <td width="30%">
+	<select name="idMateria" id="idMateria">
+		<option value="">Seleccione una Materia</option>
+		<!-- BEGIN materias -->
+		<option value='{idMateria_lista}' {selected} />{nombre_lista}</option>
+		<!-- END materias -->
+        </select>
+    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#0099CC">Archivo:</td>
+    <td colspan="3">
+		<input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+		<input type="file" name="practico" id="practico" size="50" />
+    </td>
+  </tr>
+  <tr><td colspan="4"><input type="submit" name="botonAdjuntar" value="Adjuntar" /></td></tr>
+</table>
+</form>
+<br/><hr noshade width="90%" align="left" /><br/>
+<input type="button" value="<< Volver al Men&uacute;" onclick="javascript:window.location.href = './index.html';" />
+</body>
+</html>

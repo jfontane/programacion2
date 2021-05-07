@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Curso Web 2010</title>
+<script type="text/javascript">
+function validar(f){
+	/*var j = f.elements.length;
+	var aux = 0;
+	for (var i=0; i<j; i++){
+		if(f.elements[i].type=="text" && f.elements[i].value.length > 0){
+			aux++;
+		}
+	}
+	if(aux == 0){
+		alert("ERROR: Debe completar al menos un campo de búsqueda!");
+		f.elements[0].focus();
+		return false;
+	}*/
+	return true;
+}
+function confirmar(id){
+	if(confirm("Esta seguro de eliminar este alumno?")){
+		window.location.href = './eliminar.php?idAlumno='+id
+		return true;
+	}
+	return false;
+}
+</script>
+</head>
+<body>
+
+  <h1>Curso Web 2010 - Caja de Jubilaciones</h1>
+  <h3><font color="#0066CC">Sistema integrado de administrac&iacute;on - Listado de Alumnos</font></h3>
+  <hr noshade width="90%" align="left" />
+  <form name="form1" action="./listado.php" method="post" enctype="application/x-www-form-urlencoded" onsubmit="javascript: return validar(this);">
+  <table width="90%" border="0" cellspacing="1" cellpadding="2">
+    <tr>
+      <td width="20%" bgcolor="#0099CC">Apellido:</td>
+      <td width="30%"><input type="text" name="apellido" id="apellido" value="{apellido_b}" size="30" /></td>
+      <td width="20%"  bgcolor="#0099CC">Nombre:</td>
+      <td width="30%"><input type="text" name="nombre" id="nombre" value="{nombre_b}" size="30" /></td>
+    </tr>
+    <tr>
+      <td bgcolor="#0099CC">D.N.I.:</td>
+      <td colspan="3"><input type="text" name="dni" id="dni" value="{dni_b}" size="10" /></td>
+    </tr>
+    <tr>
+      <td colspan="4"><input type="submit" name="botonBuscar" value="Buscar" /></td>
+    </tr>
+  </table>
+  </form>
+  <hr noshade width="90%" align="left" />
+  <br>
+
+<table width="90%" border="0" cellspacing="1" cellpadding="2">
+    <tr>
+      <td width="20%">
+        <a href="./nuevo.php" target="_self">
+    		<img src="./img/nuevo.png" border="0"/><strong>&nbsp;Nuevo Alumno</strong>
+    	</a>
+      </td>
+    </tr>
+</table>
+<hr noshade width="90%" align="left" />
+
+<table width="90%" border="0" cellspacing="1" cellpadding="2">
+  <tr>
+    <td width="35%" bgcolor="#0099CC">Apellido y Nombre</td>
+    <td width="15%" bgcolor="#0099CC">D.N.I.</td>
+    <td width="20%" bgcolor="#0099CC">Fecha Nacimiento</td>
+    <td width="20%" bgcolor="#0099CC">Sexo</td>
+    <td bgcolor="#0099CC"> - </td>
+  </tr>
+	<!-- START BLOCK : listado -->
+	<tr>
+	<td>{apellido} {nombre}</td>
+	<td>{dni}</td>
+	<td>{fechaNacimiento}</td>
+	<td>{sexo}</td>
+	<td bgcolor='#0099CC'>
+		<a href='./eliminar.php?idAlumno={idAlumno}&hash={hash}' target='_self' >
+			<img src='./img/eliminar.png' border='0' title='Eliminar Alumno' style='margin-left:5px'></a>
+		<a href='./editar.php?idAlumno={idAlumno}' target='_self'>
+			<img src='./img/nuevo.png' border='0' title='Editar Alumno' style='margin-left:5px'></a>
+	</td>
+	</tr>
+	<!-- END BLOCK : listado -->
+  <!-- START BLOCK : no_resultado -->
+                <tr><td colspan=10 align='center'> No hay Alumnos </td><tr>
+  <!-- END BLOCK : no_resultado -->
+  <!-- START BLOCK : mensaje -->
+                <tr><td colspan=10 align='center'> Error {mensaje_tipo} </td><tr>
+  <!-- END BLOCK : mensaje -->
+</table>
+
+
+<br/>
+<hr noshade width="90%" align="left" />
+<br/>
+<input type="button" value="<< Volver al Menu" onclick="javascript:window.location.href = './index.html';" />
+</body>
+</html>

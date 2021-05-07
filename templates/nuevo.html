@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Curso Web 2010</title>
+
+<script type="text/javascript">
+function validar(f){
+    var j = f.elements.length;
+    for (var i=0; i<j; i++){
+		if(f.elements[i].className && f.elements[i].className == "obligatorio"){
+			if(f.elements[i].value.length <= 0){
+				alert("ERROR: El campo [" + f.elements[i].name + "] es obligatorio!");
+				f.elements[i].focus();
+				return false;
+			}
+		}
+    }
+    return true;
+}
+</script>
+
+<style>
+.obligatorio{
+	border-color: #FF0000;
+}
+</style>
+</head>
+
+<body>
+<h1>Curso Web 2010 - Caja de Jubilaciones</h1>
+<h3><font color="#0066CC">Sistema integrado de administrac&iacute;on - Nuevo Alumno</font></h3>
+<hr noshade width="90%" align="left" />
+
+<form name="form1" action="./guardar.php" method="post" enctype="application/x-www-form-urlencoded">
+<table width="90%" border="0" cellspacing="1" cellpadding="2">
+	<caption align="bottom">
+		<div align="left"><font color="#FF0000">* Complete los campos obligatorios</font></div>
+	</caption>
+  <tr>
+    <td width="20%" bgcolor="#0099CC">Apellido:</td>
+    <td width="30%"><input type="text" name="apellido" id="apellido" class="obligatorio" value="" size="30" /></td>
+    <td width="20%"  bgcolor="#0099CC">Nombres:</td>
+    <td width="30%"><input type="text" name="nombre" id="nombre" class="obligatorio" size="30" /></td>
+  </tr>
+  <tr>
+    <td bgcolor="#0099CC">D.N.I.:</td>
+    <td><input type="text" name="dni" id="dni" class="obligatorio" size="10" /></td>
+    <td bgcolor="#0099CC">Fecha Nacimiento: </td>
+    <td><input type="text" name="fecha" id="fecha" size="10" /></td>
+  </tr>
+  <tr>
+    <td bgcolor="#0099CC">Sexo:</td>
+    <td><input type="radio" name="sexo" value="F" /> Femenino&nbsp;&nbsp;
+		<input type="radio" name="sexo" value="M" /> Masculino
+	</td>
+    <td bgcolor="#0099CC">Edad:</td>
+    <td><input type="text" name="edad" id="edad" size="2" /></td>
+  </tr>
+  <tr>
+  	<td bgcolor="#0099CC">Direcci&oacute;n:</td>
+    <td><input type="text" name="direccion" id="direccion" size="40" /></td>
+    <td bgcolor="#0099CC">Barrio:</td>
+    <td><select name="barrio">
+            <option value="1">Centro</option>
+            <option value="2">Norte</option>
+            <option value="3">Sur</option>
+        </select>
+    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#0099CC" valign="top">Materias en las que se inscribe:</td>
+    <td colspan="3">
+        <input type="checkbox" name="materias[]" value="1" />PHP&nbsp;&nbsp;
+        <input type="checkbox" name="materias[]" value="2" />MYSQL&nbsp;&nbsp;
+        <input type="checkbox" name="materias[]" value="3" />JavaScript<br/>
+        <input type="checkbox" name="materias[]" value="4" />CSS&nbsp;&nbsp;
+        <input type="checkbox" name="materias[]" value="5" />HTML&nbsp;&nbsp;
+        <input type="checkbox" name="materias[]" value="6" />Apache<br/>
+    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#0099CC" valign="top">Observaciones:</td>
+    <td colspan="3">
+        <textarea name="observaciones" cols="60" rows="3"></textarea>
+    </td>
+  </tr>
+</table>
+
+<br/>
+<hr noshade width="90%" align="left" />
+<br/>
+
+<input type="button" value="<< Volver al Men&uacute;" onclick="javascript:window.location.href = './index.html';" />
+<input type="submit" name="botonAceptar" value="Aceptar" />
+<input type="reset" value="Limpiar Campos" />
+</form>
+<!-- START BLOCK : mensaje -->
+              <div>{mensaje_tipo}</div> 
+<!-- END BLOCK : mensaje -->
+</body>
+</html>
